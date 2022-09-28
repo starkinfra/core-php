@@ -1,0 +1,36 @@
+{
+    "name": "starkinfra/core",
+    "version": "0.0.1",
+    "type": "library",
+    "description": "Basic SDK functionalities for the starkbank and starkinfra SDKs",
+    "homepage": "https://github.com/starkinfra/core-php",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "StarkInfra",
+            "email": "help@starkbank.com",
+            "homepage": "https://starkinfra.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php" : ">=7.1",
+        "starkbank/ecdsa": "^2.0.0"
+    },
+    "keywords": [
+        "starkinfra",
+        "stark",
+        "bank",
+        "infra",
+        "open",
+        "banking",
+        "openbanking"
+    ],
+    "autoload": {
+        "files": ["src/starkcore.php"],
+        "classmap": ["src/"],
+        "psr-4": {
+            "StarkCore\\": "src/"
+        }
+    }
+}

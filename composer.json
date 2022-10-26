@@ -15,7 +15,7 @@
     ],
     "require": {
         "php" : ">=7.1",
-        "starkbank/ecdsa": "^2.0.0"
+        "starkbank/ecdsa": "^2.0.1"
     },
     "keywords": [
         "starkinfra",

@@ -1,6 +1,6 @@
 {
     "name": "starkinfra/core",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "type": "library",
     "description": "Basic SDK functionalities for the starkbank and starkinfra SDKs",
     "homepage": "https://github.com/starkinfra/core-php",

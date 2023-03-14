@@ -21,14 +21,18 @@ class ErrorElement extends StarkError
 
 class InputErrors extends StarkError
 {
+    public array $errors;
+
     public function __construct($content)
     {
         parent::__construct(json_encode($content), 0, null);
 
         $errors = [];
+        
         foreach ($content as $error) { 
             $errors[] = new ErrorElement($error["code"], $error["message"]); 
-        } 
+        }
+        
         $this->errors = $errors;
     }
 }

@@ -214,4 +214,21 @@ class Rest
         $entity = $json[API::lastName($resource["name"])];
         return API::fromApiJson($resource["maker"], $entity);
     }
+
+    public static function postRaw($sdkVersion, $host, $apiVersion, $user, $language, $timeout, $path, $payload, $query = null)
+    {
+        $json = Request::fetch(
+            $host,
+            $sdkVersion,
+            $user, 
+            "POST", 
+            $path,
+            $payload,
+            $query,
+            $apiVersion,
+            $language,
+            $timeout,
+        )->json();
+        return $json;
+    }
 }

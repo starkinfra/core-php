@@ -13,6 +13,8 @@ Given a version number MAJOR.MINOR.PATCH, increment:
 
 
 ## [Unreleased]
+### Added
+- postRaw method
 
 ## [0.0.3] - 2022-10-27
 ### Fixed

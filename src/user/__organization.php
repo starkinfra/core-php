@@ -6,6 +6,9 @@ use StarkCore\Utils\Checks;
 
 class Organization extends User
 {
+
+    public $workspaceId;
+
     /**
     # Organization object
 

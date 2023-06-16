@@ -13,6 +13,9 @@ Given a version number MAJOR.MINOR.PATCH, increment:
 
 
 ## [Unreleased]
+### Fixed
+- undeclared class variables
+
 
 ## [0.1.0] - 2023-04-26
 ### Added

@@ -6,6 +6,9 @@ use \DateTimeZone;
 
 class StarkDate
 {
+
+    public $value;
+
     function __construct($value)
     {
         $this->value = $value;
@@ -25,6 +28,9 @@ class StarkDate
 
 class StarkDateTime
 {
+
+    public $value;
+
     function __construct($value)
     {
         $this->value = $value;

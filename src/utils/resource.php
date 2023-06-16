@@ -6,6 +6,9 @@ use StarkCore\Utils\SubResource;
 
 class Resource extends SubResource
 {
+
+    public $id;
+
     function __construct(&$params)
     {
         $id = Checks::checkParam($params, "id");

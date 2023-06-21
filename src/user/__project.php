@@ -6,6 +6,10 @@ use StarkCore\Utils\Checks;
 
 class Project extends User
 {
+
+    public $name;
+    public $allowedIps;
+
     /**
     # Project object
 

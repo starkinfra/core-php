@@ -9,6 +9,9 @@ class StarkError extends Exception {}
 
 class ErrorElement extends StarkError
 {
+    public $errorCode;
+    public $errorMessage;
+
     public function __construct($code, $message)
     {
         parent::__construct($code . ": " . $message, 0, null);
@@ -21,6 +24,9 @@ class ErrorElement extends StarkError
 
 class InputErrors extends StarkError
 {
+
+    public $errors;
+
     public function __construct($content)
     {
         parent::__construct(json_encode($content), 0, null);

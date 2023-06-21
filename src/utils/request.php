@@ -13,6 +13,10 @@ use StarkCore\Error\InternalServerError;
 
 class Response
 {
+
+    public $status;
+    public $content;
+
     function __construct($status, $content)
     {
         $this->status = $status;

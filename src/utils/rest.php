@@ -231,4 +231,35 @@ class Rest
         )->json();
         return $json;
     }
+
+    public static function put($sdkVersion, $host, $apiVersion, $user, $resource, $entities, $language, $query, $timeout)
+    {
+        $entitiesJson = [];
+        foreach($entities as $entity) {
+            $entitiesJson[] = API::apiJson($entity, $resource["name"]);
+        }
+        $payload = [
+            API::lastNamePlural($resource["name"]) => $entitiesJson
+        ];
+
+        $json = Request::fetch(
+            $host,
+            $sdkVersion,
+            $user, 
+            "PUT", 
+            API::endpoint($resource["name"]),
+            $payload,
+            $query,
+            $apiVersion,
+            $language,
+            $timeout
+        )->json();
+
+        $retrievedEntities = [];
+        foreach($json[API::lastNamePlural($resource["name"])] as $entity) {
+            $retrievedEntities[] = API::fromApiJson($resource["maker"], $entity);
+        }
+
+        return $retrievedEntities;
+    }
 }

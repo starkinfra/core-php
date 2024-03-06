@@ -232,7 +232,7 @@ class Rest
         return $json;
     }
 
-    public static function put($sdkVersion, $host, $apiVersion, $user, $resource, $entities, $language, $query, $timeout)
+    public static function putMulti($sdkVersion, $host, $apiVersion, $user, $resource, $entities, $language, $query, $timeout)
     {
         $entitiesJson = [];
         foreach($entities as $entity) {

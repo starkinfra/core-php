@@ -13,10 +13,10 @@ Given a version number MAJOR.MINOR.PATCH, increment:
 
 
 ## [Unreleased]
+
+## [0.2.1] - 2024-03-06
 ### Added
 - put method
-### Changed
-- put method to putMulti
 
 ## [0.2.0] - 2023-06-21
 ### Added

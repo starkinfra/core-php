@@ -215,23 +215,6 @@ class Rest
         return API::fromApiJson($resource["maker"], $entity);
     }
 
-    public static function postRaw($sdkVersion, $host, $apiVersion, $user, $language, $timeout, $path, $payload, $query = null)
-    {
-        $json = Request::fetch(
-            $host,
-            $sdkVersion,
-            $user, 
-            "POST", 
-            $path,
-            $payload,
-            $query,
-            $apiVersion,
-            $language,
-            $timeout,
-        )->json();
-        return $json;
-    }
-
     public static function putMulti($sdkVersion, $host, $apiVersion, $user, $resource, $entities, $language, $query, $timeout)
     {
         $entitiesJson = [];
@@ -261,5 +244,100 @@ class Rest
         }
 
         return $retrievedEntities;
+    }
+
+    public static function postRaw($sdkVersion, $host, $apiVersion, $user, $language, $timeout, $path, $payload, $query = null, $prefix = null, $throwError = true)
+    {
+        $json = Request::fetch(
+            $host,
+            $sdkVersion,
+            $user, 
+            "POST", 
+            $path,
+            $payload,
+            $query,
+            $apiVersion,
+            $language,
+            $timeout,
+            $prefix,
+            $throwError
+        );
+        return $json;
+    }
+
+    public static function getRaw($sdkVersion, $host, $apiVersion, $user, $language, $timeout, $path, $payload=null, $query = null, $prefix = null, $throwError = true)
+    {
+        $json = Request::fetch(
+            $host,
+            $sdkVersion,
+            $user, 
+            "GET", 
+            $path,
+            $payload,
+            $query,
+            $apiVersion,
+            $language,
+            $timeout,
+            $prefix,
+            $throwError
+        );
+        return $json;
+    }
+
+    public static function patchRaw($sdkVersion, $host, $apiVersion, $user, $language, $timeout, $path, $payload, $query = null, $prefix = null, $throwError = true)
+    {
+        $json = Request::fetch(
+            $host,
+            $sdkVersion,
+            $user, 
+            "PATCH", 
+            $path,
+            $payload,
+            $query,
+            $apiVersion,
+            $language,
+            $timeout,
+            $prefix,
+            $throwError
+        );
+        return $json;
+    }
+
+    public static function putRaw($sdkVersion, $host, $apiVersion, $user, $language, $timeout, $path, $payload, $query = null, $prefix = null, $throwError = true)
+    {
+        $json = Request::fetch(
+            $host,
+            $sdkVersion,
+            $user, 
+            "PUT", 
+            $path,
+            $payload,
+            $query,
+            $apiVersion,
+            $language,
+            $timeout,
+            $prefix,
+            $throwError
+        );
+        return $json;
+    }
+
+    public static function deleteRaw($sdkVersion, $host, $apiVersion, $user, $language, $timeout, $path, $payload, $query = null, $prefix = null, $throwError = true)
+    {
+        $json = Request::fetch(
+            $host,
+            $sdkVersion,
+            $user, 
+            "DELETE", 
+            $path,
+            $payload,
+            $query,
+            $apiVersion,
+            $language,
+            $timeout,
+            $prefix,
+            $throwError
+        );
+        return $json;
     }
 }

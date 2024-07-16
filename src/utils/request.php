@@ -32,7 +32,7 @@ class Response
 
 class Request
 {
-    public static function fetch($host, $sdkVersion, $user, $method, $path, $payload = null, $query = null, $apiVersion = "v2", $language="en-US", $timeout=15)
+    public static function fetch($host, $sdkVersion, $user, $method, $path, $payload = null, $query = null, $apiVersion = "v2", $language="en-US", $timeout=15, $prefix = null, $throwError = true)
     {    
         $user = Checks::checkUser($user);
         $language = Checks::checkLanguage($language);
@@ -53,7 +53,9 @@ class Request
         }
 
         $agent = "PHP-" . phpversion() . "-SDK-" . $host . "-" . $sdkVersion;
-
+        if (!is_null($prefix)) {
+            $agent = $prefix . "-PHP-" . phpversion() . "-SDK-" . $host . "-" . $sdkVersion;
+        }
         $body = null;
         if (!is_null($payload))
             $body = json_encode($payload);
@@ -66,17 +68,17 @@ class Request
         $headers = array_merge($headers, self::_authenticationHeaders($user, $body));
 
         $response = Request::makeRequest($method, $headers, $url, $body);
-
-        if ($response->status == 500) {
-            throw new InternalServerError();
+        if ($throwError != false) {
+            if ($response->status == 500) {
+                throw new InternalServerError();
+            }
+            if ($response->status == 400) {
+                throw new InputErrors($response->json()["errors"]);
+            }
+            if ($response->status != 200) {
+                throw new UnknownError(strval($response->content));
+            }
         }
-        if ($response->status == 400) {
-            throw new InputErrors($response->json()["errors"]);
-        }
-        if ($response->status != 200) {
-            throw new UnknownError(strval($response->content));
-        }
-
         return $response;
     }
 

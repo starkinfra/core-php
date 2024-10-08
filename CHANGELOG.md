@@ -13,6 +13,8 @@ Given a version number MAJOR.MINOR.PATCH, increment:
 
 
 ## [Unreleased]
+### Fixed
+- URL encode method
 
 ## [0.4.0] - 2024-07-17
 ### Added

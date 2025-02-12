@@ -127,6 +127,25 @@ class Rest
         return API::fromApiJson($subresource["maker"], $entity);
     }
 
+    public static function postSubResource($sdkVersion, $host, $apiVersion, $user, $resource, $id, $subresource, $entity, $language, $timeout)
+    {
+        $payload = API::apiJson($entity, $subresource["name"]);
+        $json = Request::fetch(
+            $host,
+            $sdkVersion,
+            $user, 
+            "POST", 
+            API::endpoint($resource["name"]) . "/" . $id . "/" . API::endpoint($subresource["name"]),
+            $payload,
+            null,
+            $apiVersion,
+            $language,
+            $timeout
+        )->json();
+        $entityJson = $json[API::lastName($subresource["name"])];
+        return API::fromApiJson($subresource["maker"], $entityJson);
+    }
+
     public static function post($sdkVersion, $host, $apiVersion, $user, $resource, $entities, $language, $timeout, $query)
     {
         $entitiesJson = [];

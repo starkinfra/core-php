@@ -87,11 +87,11 @@ class Rest
         return API::fromApiJson($resource["maker"], $entity);
     }
 
-    public static function getContent($sdkVersion, $host, $apiVersion, $user, $resource, $id, $subresourceName, $language, $timeout, $options = null)
+    public static function getContent($sdkVersion, $host, $apiVersion, $user, $resource, $id, $subResourceName, $language, $timeout, $options = null)
     {
         $id = Checks::checkId($id);
         $options = API::castJsonToApiFormat($options);
-        $path = API::endpoint($resource["name"]) . "/" . $id . "/" . $subresourceName;
+        $path = API::endpoint($resource["name"]) . "/" . $id . "/" . $subResourceName;
         return Request::fetch(
             $host,
             $sdkVersion,
@@ -106,11 +106,11 @@ class Rest
         )->content;
     }
 
-    public static function getSubresource($sdkVersion, $host, $apiVersion, $user, $resource, $id, $subresource, $language, $timeout, $options = null)
+    public static function getSubResource($sdkVersion, $host, $apiVersion, $user, $resource, $id, $subResource, $language, $timeout, $options = null)
     {
         $id = Checks::checkId($id);
         $options = API::castJsonToApiFormat($options);
-        $path = API::endpoint($resource["name"]) . "/" . $id . "/" . API::endpoint($subresource["name"]);
+        $path = API::endpoint($resource["name"]) . "/" . $id . "/" . API::endpoint($subResource["name"]);
         $json = Request::fetch(
             $host,
             $sdkVersion,
@@ -123,27 +123,27 @@ class Rest
             $language,
             $timeout
         )->json();
-        $entity = $json[API::lastName($subresource["name"])];
-        return API::fromApiJson($subresource["maker"], $entity);
+        $entity = $json[API::lastName($subResource["name"])];
+        return API::fromApiJson($subResource["maker"], $entity);
     }
 
-    public static function postSubResource($sdkVersion, $host, $apiVersion, $user, $resource, $id, $subresource, $entity, $language, $timeout)
+    public static function postSubResource($sdkVersion, $host, $apiVersion, $user, $resource, $id, $subResource, $entity, $language, $timeout)
     {
-        $payload = API::apiJson($entity, $subresource["name"]);
+        $payload = API::apiJson($entity, $subResource["name"]);
         $json = Request::fetch(
             $host,
             $sdkVersion,
             $user, 
             "POST", 
-            API::endpoint($resource["name"]) . "/" . $id . "/" . API::endpoint($subresource["name"]),
+            API::endpoint($resource["name"]) . "/" . $id . "/" . API::endpoint($subResource["name"]),
             $payload,
             null,
             $apiVersion,
             $language,
             $timeout
         )->json();
-        $entityJson = $json[API::lastName($subresource["name"])];
-        return API::fromApiJson($subresource["maker"], $entityJson);
+        $entityJson = $json[API::lastName($subResource["name"])];
+        return API::fromApiJson($subResource["maker"], $entityJson);
     }
 
     public static function post($sdkVersion, $host, $apiVersion, $user, $resource, $entities, $language, $timeout, $query)

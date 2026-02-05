@@ -14,6 +14,10 @@ Given a version number MAJOR.MINOR.PATCH, increment:
 
 ## [Unreleased]
 
+## [0.5.1] - 2026-02-04
+### Fixed
+- postSubResource method
+
 ## [0.5.0] - 2025-02-18
 ### Added
 - postSubResource method

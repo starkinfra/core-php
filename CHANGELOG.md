@@ -13,6 +13,8 @@ Given a version number MAJOR.MINOR.PATCH, increment:
 
 
 ## [Unreleased]
+### Fixed
+- UTF-8 encoding
 
 ## [0.6.0] - 2026-04-29
 ### Changed

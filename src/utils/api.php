@@ -28,8 +28,7 @@ class API
                 continue;
             }
             if (is_string($value)) {
-                $value = utf8_decode($value);
-                $clean[$key] = utf8_encode($value);
+                $clean[$key] = mb_convert_encoding($value, 'UTF-8', 'UTF-8');
                 continue;
             }
             if ($value instanceof DateTime) {

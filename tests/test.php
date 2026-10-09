@@ -5,6 +5,7 @@ require_once("utils/user.php");
 
 echo "\n\nStarting tests\n";
 
+include_once("testUtf8.php");
 include_once("testRestGet.php");
 include_once("testRestRaw.php");
 

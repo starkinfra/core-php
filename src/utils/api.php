@@ -28,8 +28,7 @@ class API
                 continue;
             }
             if (is_string($value)) {
-                $value = utf8_decode($value);
-                $clean[$key] = utf8_encode($value);
+                $clean[$key] = preg_match('//u', $value) ? $value : utf8_encode(utf8_decode($value));
                 continue;
             }
             if ($value instanceof DateTime) {
@@ -104,6 +103,9 @@ class API
             return API::lastName($resourceName) . "s";
         if ($resourceName[strlen($resourceName)-1] == 'y')
             return API::lastName(substr($resourceName, 0, -1)) . "ies";
-        return API::lastName($resourceName) . "s";
+        $lastName = API::lastName($resourceName);
+        if (preg_match('/(ch|sh|x)$/', $lastName))
+            return $lastName . "es";
+        return $lastName . "s";
     }
 }

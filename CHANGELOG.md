@@ -13,7 +13,9 @@ Given a version number MAJOR.MINOR.PATCH, increment:
 
 
 ## [Unreleased]
-### Fixed
+
+## [0.7.0] - 2026-10-14
+### Added
 - plural of resource names ending in "ch", "sh" or "x", which now take "es" (speech becomes speeches)
 - text outside Latin-1 (em dash, euro sign, emoji, CJK) being replaced by "?" in request bodies and query strings
 - upgrade note: such characters in externalIds, tags and other strings used to reach the API as "?" and are now sent verbatim, so a retry spanning the upgrade is not caught as a repeated externalId, "query by tags/externalIds, create if not found" checks no longer match records created before it, and fields with strict character sets may now return 400

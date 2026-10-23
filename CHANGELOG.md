@@ -13,6 +13,11 @@ Given a version number MAJOR.MINOR.PATCH, increment:
 
 
 ## [Unreleased]
+### Changed
+- PHP requirement to `~8.2.35 || ~8.3.36 || ~8.4.27 || >=8.5.12`. Earlier PHP versions can no longer install this library
+- Distributions that backport the fix without changing the PHP version number may be blocked by this requirement; use `--ignore-platform-req=php` only after confirming the fix in the distribution's advisory
+### Security
+- Require PHP versions that fix CVE-2026-109618 and CVE-2026-109619 (PHP2Shell), which affect PHP 5.4 through 8.5.11 and allow unauthenticated remote code execution
 
 ## [0.7.0] - 2026-10-15
 ### Added

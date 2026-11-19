@@ -265,6 +265,37 @@ class Rest
         return $retrievedEntities;
     }
 
+    public static function patchMulti($sdkVersion, $host, $apiVersion, $user, $resource, $entities, $language, $query, $timeout)
+    {
+        $entitiesJson = [];
+        foreach($entities as $entity) {
+            $entitiesJson[] = API::apiJson($entity, $resource["name"]);
+        }
+        $payload = [
+            API::lastNamePlural($resource["name"]) => $entitiesJson
+        ];
+
+        $json = Request::fetch(
+            $host,
+            $sdkVersion,
+            $user, 
+            "PATCH", 
+            API::endpoint($resource["name"]),
+            $payload,
+            $query,
+            $apiVersion,
+            $language,
+            $timeout
+        )->json();
+
+        $retrievedEntities = [];
+        foreach($json[API::lastNamePlural($resource["name"])] as $entity) {
+            $retrievedEntities[] = API::fromApiJson($resource["maker"], $entity);
+        }
+
+        return $retrievedEntities;
+    }
+
     public static function postRaw($sdkVersion, $host, $apiVersion, $user, $language, $timeout, $path, $payload, $query = null, $prefix = null, $throwError = true)
     {
         $json = Request::fetch(

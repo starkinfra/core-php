@@ -9,5 +9,6 @@ include_once("testApi.php");
 include_once("testUtf8.php");
 include_once("testRestGet.php");
 include_once("testRestRaw.php");
+include_once("testPatchMulti.php");
 
 echo "\n\nAll tests concluded\n\n";

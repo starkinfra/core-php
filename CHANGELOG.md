@@ -14,7 +14,7 @@ Given a version number MAJOR.MINOR.PATCH, increment:
 
 ## [Unreleased]
 
-## [0.9.0] - 2026-11-24
+## [0.9.0] - 2026-11-25
 ### Added
 - patchMulti method, the PATCH counterpart of putMulti, to update several resources in one request
 
